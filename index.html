@@ -371,7 +371,7 @@
     </div>
 
     <!-- Pay Now Button -->
-    <a class="pay-btn" id="payNowBtn" href="upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=101&cu=INR" >
+    <a class="pay-btn" id="payNowBtn" href="https://razorpay.me/@dataimpact" target="_blank">
       🙏 अभी दान करें — ₹<span id="btnAmt">101</span>
     </a>
 
@@ -379,13 +379,13 @@
 
     <p class="apps-label">किसी भी UPI App से भुगतान करें</p>
     <div class="apps-row">
-      <a class="app-chip" href="upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&cu=INR">
+      <a class="app-chip" href="https://razorpay.me/@dataimpact" target="_blank">
         <span>📱</span> GPay
       </a>
-      <a class="app-chip" href="upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&cu=INR">
+      <a class="app-chip" href="https://razorpay.me/@dataimpact" target="_blank">
         <span>💜</span> PhonePe
       </a>
-      <a class="app-chip" href="upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&cu=INR">
+      <a class="app-chip" href="https://razorpay.me/@dataimpact" target="_blank">
         <span>🔵</span> Paytm
       </a>
     </div>
@@ -415,7 +415,7 @@
       customBox.style.display = 'none';
       selectedAmt = parseInt(el.dataset.amt);
       document.getElementById('btnAmt').textContent = selectedAmt;
-      const upi = `upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=${selectedAmt}&cu=INR`;
+      const upi = 'https://razorpay.me/@dataimpact';
       document.getElementById('payNowBtn').href = upi;
     }
   }
@@ -424,7 +424,7 @@
     selectedAmt = parseInt(val) || 0;
     if (selectedAmt > 0) {
       document.getElementById('btnAmt').textContent = selectedAmt;
-      const upi = `upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=${selectedAmt}&cu=INR`;
+      const upi = 'https://razorpay.me/@dataimpact';
       document.getElementById('payNowBtn').href = upi;
     }
   }
