@@ -89,6 +89,25 @@
       display: block;
       margin: 0 auto;
     }
+    .upi-btn {
+      display: inline-block;
+      margin-top: 18px;
+      background: #FFFDF7;
+      color: #7B1C1C;
+      font-family: 'Noto Sans Devanagari', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 60px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .upi-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.3);
+    }
+    .upi-btn:active { transform: scale(0.98); }
     .diya { margin-top: 36px; font-size: 26px; letter-spacing: 10px; }
     footer {
       margin-top: 24px;
@@ -111,8 +130,11 @@
   </p>
 
   <div class="upi-box">
-    <p>📲 नीचे QR Code स्कैन करें और जितना चाहें दान करें</p>
+    <p>📲 QR Code स्कैन करें या नीचे बटन दबाएं — जितना चाहें दान करें</p>
     <img src="upi-qr.jpeg" alt="UPI QR Code" />
+    <a class="upi-btn" href="upi://pay?pa=jivandarshanradio@ybl&pn=Jivan%20Darshan&cu=INR">
+      🙏 UPI से दान करें
+    </a>
   </div>
 
   <div class="diya">🪔🌸🪔</div>
