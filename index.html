@@ -329,30 +329,27 @@
     <h2>दान करें, पुण्य कमाएं</h2>
 
     <div class="amount-grid" id="amountGrid">
-      <div class="amt-btn" data-amt="11" onclick="selectAmt(this)">
-        <div class="rupee">₹11</div>
-        <span class="label">दक्षिणा</span>
-      </div>
-      <div class="amt-btn" data-amt="51" onclick="selectAmt(this)">
-        <div class="rupee">₹51</div>
-        <span class="label">प्रसाद</span>
-      </div>
       <div class="amt-btn active" data-amt="101" onclick="selectAmt(this)">
         <div class="rupee">₹101</div>
         <span class="label">सहयोग</span>
       </div>
-      <div class="amt-btn" data-amt="501" onclick="selectAmt(this)">
-        <div class="rupee">₹501</div>
+      <div class="amt-btn" data-amt="201" onclick="selectAmt(this)">
+        <div class="rupee">₹201</div>
         <span class="label">विशेष</span>
       </div>
-      <div class="amt-btn" data-amt="1001" onclick="selectAmt(this)">
-        <div class="rupee">₹1001</div>
+      <div class="amt-btn" data-amt="501" onclick="selectAmt(this)">
+        <div class="rupee">₹501</div>
         <span class="label">महा दान</span>
       </div>
-      <div class="amt-btn" data-amt="0" onclick="selectAmt(this)">
+      <div class="amt-btn" data-amt="0" onclick="selectAmt(this, true)">
         <div class="rupee">अन्य</div>
         <span class="label">राशि चुनें</span>
       </div>
+    </div>
+    <div id="customAmtBox" style="display:none; margin-bottom:16px;">
+      <input type="number" id="customAmt" placeholder="राशि दर्ज करें (₹)" min="1"
+        style="width:100%; padding:12px 16px; border:1.5px solid #E8C97A; border-radius:10px; font-size:1rem; font-family:inherit; color:#2C1A00; background:#FFF8EE; outline:none;"
+        oninput="updateCustomAmt(this.value)" />
     </div>
 
     <!-- QR Code -->
@@ -405,14 +402,31 @@
 <script>
   let selectedAmt = 101;
 
-  function selectAmt(el) {
+  function selectAmt(el, isOther) {
     document.querySelectorAll('.amt-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
-    const amt = parseInt(el.dataset.amt);
-    selectedAmt = amt || 101;
-    document.getElementById('btnAmt').textContent = selectedAmt;
-    const upi = `upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=${selectedAmt}&cu=INR`;
-    document.getElementById('payNowBtn').href = upi;
+    const customBox = document.getElementById('customAmtBox');
+    if (isOther) {
+      customBox.style.display = 'block';
+      document.getElementById('customAmt').focus();
+      document.getElementById('btnAmt').textContent = '?';
+      document.getElementById('payNowBtn').href = '#';
+    } else {
+      customBox.style.display = 'none';
+      selectedAmt = parseInt(el.dataset.amt);
+      document.getElementById('btnAmt').textContent = selectedAmt;
+      const upi = `upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=${selectedAmt}&cu=INR`;
+      document.getElementById('payNowBtn').href = upi;
+    }
+  }
+
+  function updateCustomAmt(val) {
+    selectedAmt = parseInt(val) || 0;
+    if (selectedAmt > 0) {
+      document.getElementById('btnAmt').textContent = selectedAmt;
+      const upi = `upi://pay?pa=7054411333@upi&pn=Jeevan Darshan&am=${selectedAmt}&cu=INR`;
+      document.getElementById('payNowBtn').href = upi;
+    }
   }
 
   function copyUPI() {
